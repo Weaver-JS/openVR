@@ -60,6 +60,9 @@
     <ClCompile Include="CubeRoom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObjLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowManager.h">
@@ -93,6 +96,9 @@
       <Filter>Header Files\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="CubeRoom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

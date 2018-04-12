@@ -21,8 +21,11 @@ bool TestState::init()
 	glClearColor(0, 0, 0, 1);
 	shader = new Shader("test_shader.vert", "test_shader.frag");
 	shader->use_Shader();
+	hasTextureUniform = shader->getUniformLocation("hasTexture");
 	testShape = new TestShape(shader);
-	room = new CubeRoom(shader);
+	objTest = new ObjLoader(shader, "ducky.obj");
+	
+	//room = new CubeRoom(shader);
 	camera = new Camera(shader, WINDOW_WIDTH, WINDOW_HEIGHT);
 	SDL_WarpMouseGlobal(500, 500);
 	SDL_ShowCursor(0);
@@ -38,10 +41,11 @@ bool TestState::update()
 {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	room->Draw();
+	//room->Draw();
+	glUniform1i(hasTextureUniform, true);
 	this->testShape->Draw();
-	
-
+	glUniform1i(hasTextureUniform, false);
+	objTest->Draw();
 	const uint8_t* state = SDL_GetKeyboardState(NULL);
 	camera->Update();
 	if (state[SDL_SCANCODE_A])
@@ -70,16 +74,26 @@ bool TestState::update()
 	sin(180) 0
 	sin(270) = -1
 	*/
+	float PI = 3.14159265358979323846;
+	float pitch = camRotation.x;
+	float yaw = camRotation.y;
+	float pitchRadian = pitch * (PI / 180);
+	float yawRadian = yaw   * (PI / 180); // Y rotation
+	float newPosX = camVelocity.x * sinf(yawRadian) * cosf(pitchRadian);
+	float newPosY = camVelocity.y * -sinf(pitchRadian);
+	float newPosZ = camVelocity.z * cosf(yawRadian) * cosf(pitchRadian);
+	std::cout << newPosX << std::endl;
+
 	if (state[SDL_SCANCODE_W])
 	{
 		camera->Translate(
-			glm::vec3(-camVelocity.x * glm::sin(glm::radians(camRotation.y)),
-			0,
-			-camVelocity.z * glm::cos(glm::radians(camRotation.y))));
+			glm::vec3(newPosX,
+				-newPosY,
+			-newPosZ));
 	}
 	if (state[SDL_SCANCODE_S])
 	{
-		camera->Translate(glm::vec3(0.0f, 0.0f, camVelocity.z));
+		camera->Translate(glm::vec3(0.0f, 0.0f, newPosZ));
 			/*glm::vec3(camVelocity.x * glm::sin(glm::radians(camRotation.y)),
 				0,
 				camVelocity.z * glm::cos(glm::radians(camRotation.y))));*/

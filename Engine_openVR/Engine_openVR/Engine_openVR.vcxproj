@@ -135,6 +135,7 @@
     <ClCompile Include="CubeRoom.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="ObjLoader.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TestShape.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="CubeRoom.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="ObjLoader.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="TestShape.h" />
     <ClInclude Include="TestState.h" />

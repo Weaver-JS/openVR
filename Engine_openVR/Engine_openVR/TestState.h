@@ -4,6 +4,7 @@
 #include "CubeRoom.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "ObjLoader.h"
 
 class TestState : public GameState 
 {
@@ -12,8 +13,10 @@ private:
 	TestShape* testShape;
 	Camera* camera;
 	CubeRoom* room;
+	ObjLoader* objTest;
 	glm::vec3 camRotation;
 	glm::vec3 camVelocity;
+	GLuint hasTextureUniform;
 public:
 	TestState();
 	~TestState();

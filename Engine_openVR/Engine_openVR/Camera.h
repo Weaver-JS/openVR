@@ -13,6 +13,8 @@ private:
 	glm::mat4 translation;
 	glm::mat4 rotation;
 
+	//Camera 
+	
 	Shader* shader;
 
 	int vpUniform;
