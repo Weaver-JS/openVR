@@ -5,7 +5,7 @@ Camera::Camera(Shader* shader)
 {
 	this->shader = shader;
 	vpUniform = shader->getUniformLocation("mvpMatrix");
-	projectMatrix = glm::perspective(glm::radians(45.0f), WINDOW_WIDTH / WINDOW_HEIGHT, 1.0F, 1000.0f);//FOV, aspectRatio, zNear, zFar
+	projectMatrix = glm::perspective(glm::radians(45.0f), WINDOW_WIDTH / WINDOW_HEIGHT, 1.0f, 10000000.0f);//FOV, aspectRatio, zNear, zFar
 
 }
 

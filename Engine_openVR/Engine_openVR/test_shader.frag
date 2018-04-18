@@ -9,7 +9,7 @@ uniform sampler2D in_texture;
 
 void main()
 {
-	vec3 tempColor =Color ;
+	vec3 tempColor = Color ;
 	if(hasTexture)
 	{
 		tempColor += texture(in_texture,uvs).rgb;

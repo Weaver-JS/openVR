@@ -66,6 +66,13 @@ void Drawable::loadTexture(std::string fileName)
 	}
 }
 
+void Drawable::setShader(Shader & sh)
+{
+	shader = &sh;
+}
+
+
+
 void Drawable::bindVAO()
 {
 	glBindVertexArray(VAO);
@@ -76,14 +83,19 @@ void Drawable::unbindVAO()
 	glBindVertexArray(0);
 }
 
+
 Drawable::Drawable()
 {
 	VAO = 0;
 	VBO = 0;
 	EBO = 0;
 	textureID = 0;
+	position = glm::vec3(0.0f, 0.0f, 0.0f);
+	rotation = glm::vec3(0.0f, glm::radians(30.0f), 0.0f);
+	scale = glm::vec3(1.0f);
 	glGenVertexArrays(1, &this->VAO);
 }
+
 
 bool Drawable::Draw()
 {
@@ -92,6 +104,9 @@ bool Drawable::Draw()
 		return false;
 	}
 	bindVAO();
+	position += glm::vec3(0.0f, 0.1f, 0.0);
+	//shader->getAttribute("position")
+	glUniform3fv(0, 1, glm::value_ptr(position));
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	glDrawElements(GL_TRIANGLES, elements.size(), GL_UNSIGNED_INT, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
