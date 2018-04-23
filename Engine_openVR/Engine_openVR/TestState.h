@@ -5,6 +5,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "ObjLoader.h"
+#include "VR_Manager.h"
 
 class TestState : public GameState 
 {
@@ -14,6 +15,7 @@ private:
 	Camera* camera;
 	CubeRoom* room;
 	ObjLoader* objTest;
+	VR_Manager vrManager;
 
 	std::vector<Drawable*> drawables;
 	glm::vec3 camRotation;

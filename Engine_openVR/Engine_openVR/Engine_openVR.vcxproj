@@ -88,10 +88,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32s.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32s.lib;opengl32.lib;glu32.lib;openvr_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -136,11 +136,13 @@
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="ObjLoader.cpp" />
+    <ClCompile Include="RenderModel.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TestShape.cpp" />
     <ClCompile Include="TestState.cpp" />
     <ClCompile Include="TestState2.cpp" />
+    <ClCompile Include="VR_Manager.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
@@ -151,10 +153,12 @@
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="ObjLoader.h" />
+    <ClInclude Include="RenderModel.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="TestShape.h" />
     <ClInclude Include="TestState.h" />
     <ClInclude Include="TestState2.h" />
+    <ClInclude Include="VR_Manager.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>

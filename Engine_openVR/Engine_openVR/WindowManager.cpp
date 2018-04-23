@@ -1,6 +1,6 @@
 #include "WindowManager.h"
 #include <SDL2\SDL.h>
-
+#include <OpenVR\openvr.h>
 WindowManager* WindowManager::instance;
 
 WindowManager*  WindowManager::getInstance()
@@ -15,6 +15,7 @@ WindowManager*  WindowManager::getInstance()
 
 WindowManager::WindowManager()
 {
+
 	active = true;
 	try 
 	{

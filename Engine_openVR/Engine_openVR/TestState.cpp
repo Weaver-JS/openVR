@@ -60,6 +60,7 @@ bool TestState::init()
 	testShape->setShader(*shader);
 	//camRotation = glm::vec3(0.0f);
 
+	vrManager.init();
 	camVelocity = glm::vec3(0.1f, 0.1f, 1.0f);
 
 
