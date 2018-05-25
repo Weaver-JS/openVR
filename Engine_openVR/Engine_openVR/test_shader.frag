@@ -12,8 +12,9 @@ void main()
 	vec3 tempColor = Color ;
 	if(hasTexture)
 	{
-		tempColor += texture(in_texture,uvs).rgb;
+		 outColor = texture(in_texture, uvs);
+		//tempColor += texture(in_texture,uvs).rgb;
 	}
-
-	outColor = vec4(tempColor,1.0f);
+	 outColor = texture(in_texture, uvs);
+	//	outColor = vec4(tempColor,1.0f);
 }

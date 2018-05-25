@@ -1,8 +1,6 @@
 #pragma once
 #include "GameState.h"
-#include "TestShape.h"
 #include "CubeRoom.h"
-#include "Shader.h"
 #include "Camera.h"
 #include "ObjLoader.h"
 #include "VR_Manager.h"

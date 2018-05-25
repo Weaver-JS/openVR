@@ -25,6 +25,9 @@
     <Filter Include="Source Files\GameStates">
       <UniqueIdentifier>{29c8a204-53e7-438f-8ee1-f3e608b34519}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Shaders">
+      <UniqueIdentifier>{ac8be49c-25f3-410a-b377-4b8aec5f9972}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -113,13 +116,34 @@
     <ClInclude Include="RenderModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="models.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="test_shader.frag">
-      <Filter>Resource Files</Filter>
+    <None Include="C:\Users\ViOD 8\Desktop\openvrexamples-master\Pruebas OpenVR\src\scene_shader.vert">
+      <Filter>Header Files\Shaders</Filter>
+    </None>
+    <None Include="C:\Users\ViOD 8\Desktop\openvrexamples-master\Pruebas OpenVR\src\screen_shader.frag">
+      <Filter>Header Files\Shaders</Filter>
+    </None>
+    <None Include="C:\Users\ViOD 8\Desktop\openvrexamples-master\Pruebas OpenVR\src\screen_shader.vert">
+      <Filter>Header Files\Shaders</Filter>
+    </None>
+    <None Include="C:\Users\ViOD 8\Desktop\openvrexamples-master\Pruebas OpenVR\src\render_model_shader.frag">
+      <Filter>Header Files\Shaders</Filter>
+    </None>
+    <None Include="C:\Users\ViOD 8\Desktop\openvrexamples-master\Pruebas OpenVR\src\render_model_shader.vert">
+      <Filter>Header Files\Shaders</Filter>
+    </None>
+    <None Include="C:\Users\ViOD 8\Desktop\openvrexamples-master\Pruebas OpenVR\src\scene_shader.frag">
+      <Filter>Header Files\Shaders</Filter>
     </None>
     <None Include="test_shader.vert">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Shaders</Filter>
+    </None>
+    <None Include="test_shader.frag">
+      <Filter>Header Files\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

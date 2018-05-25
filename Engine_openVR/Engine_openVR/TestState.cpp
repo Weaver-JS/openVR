@@ -59,7 +59,7 @@ bool TestState::init()
 	camera->setTranslation(glm::vec3(0, 0, 500.0));
 	testShape->setShader(*shader);
 	//camRotation = glm::vec3(0.0f);
-
+	vrManager.setSceneShader(*shader);
 	vrManager.init();
 	camVelocity = glm::vec3(0.1f, 0.1f, 1.0f);
 
@@ -74,8 +74,8 @@ bool TestState::update()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//room->Draw();
 	camera->Update();
-
-
+	vrManager.update();
+	vrManager.draw();
 	glUniform1i(hasTextureUniform, true);
 	for (auto drawable : drawables)
 	{
@@ -90,7 +90,7 @@ bool TestState::update()
 		
 		drawable->Draw();
 	}
-
+	
 	glUniform1i(hasTextureUniform, false);
 	objTest->Draw();
 	const uint8_t* state = SDL_GetKeyboardState(NULL);

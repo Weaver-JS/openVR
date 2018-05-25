@@ -139,6 +139,13 @@ GLint Shader::getUniformLocation(std::string name)
 	return glGetUniformLocation(shaderprogram_id, name.c_str());
 }
 
+bool Shader::set_mvp_matrix(const glm::mat4 mvp)
+{
+	int matrixID = glGetUniformLocation(shaderprogram_id, "mvp");
+	glUniformMatrix4fv(matrixID, 1, GL_FALSE, glm::value_ptr(mvp));
+
+	return true;
+}
 void Shader::setUniformMatrix(GLint location, glm::mat4 matrix)
 {
 	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));

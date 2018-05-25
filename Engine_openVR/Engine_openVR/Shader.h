@@ -27,6 +27,7 @@ private:
 public:
 	Shader(std::string vertexFilename, std::string fragmentFileName);
 	bool use_Shader();
+	bool set_mvp_matrix(const glm::mat4 mvp);
 	GLint getAttribute(std::string name);
 	GLint getUniformLocation(std::string name);
 	void setUniformMatrix(GLint location, glm::mat4 matrix);
