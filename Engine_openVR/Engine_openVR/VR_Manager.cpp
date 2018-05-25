@@ -109,7 +109,8 @@ int VR_Manager::initOpenVR()
 
 void VR_Manager::processVREvent(const vr::VREvent_t & vrEvent)
 {
-
+	if(triggerModel != NULL)
+	triggerModel->modelMatrix = nullptr;
 	std::string str_td_class = GetTrackedDeviceClassString(vrContext->GetTrackedDeviceClass(vrEvent.trackedDeviceIndex));
 
 	switch (vrEvent.eventType)
@@ -148,10 +149,12 @@ void VR_Manager::processVREvent(const vr::VREvent_t & vrEvent)
 		if (vrContext->GetControllerStateWithPose(vr::ETrackingUniverseOrigin::TrackingUniverseStanding, vrEvent.trackedDeviceIndex, &controller_state, sizeof(controller_state), &td_pose)) {
 			if ((vr::ButtonMaskFromId(vr::EVRButtonId::k_EButton_Axis1) & controller_state.ulButtonPressed) != 0) {
 				std::cout << "Trigger button pressed!" << std::endl;
+				triggerModel->modelMatrix = &trackedDevicesPoses[4].mDeviceToAbsoluteTracking ;
 				std::cout << "Pose information" << std::endl;
 				std::cout << "  Tracking result: " << td_pose.eTrackingResult << std::endl;
 				std::cout << "  Tracking velocity: (" << td_pose.vVelocity.v[0] << "," << td_pose.vVelocity.v[1] << "," << td_pose.vVelocity.v[2] << ")" << std::endl;
 			}
+			
 		}
 	}
 	break;
@@ -509,10 +512,15 @@ void VR_Manager::draw()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	//SCENE SHADER
-	
+		triggerModel = render_models[1];
+
 	scene_shader->use_Shader();
+	if(triggerModel->modelMatrix != nullptr)
+	scene_shader->set_mvp_matrix(projectionMatrixLeft*viewMatrixLeft*glm::inverse(HMDPoseMatrix)*convertStemVRMatrixToGLMMatrix(*triggerModel->modelMatrix));//
+	else
 	scene_shader->set_mvp_matrix(projectionMatrixLeft*viewMatrixLeft*glm::inverse(HMDPoseMatrix)*model);// If we don't apply the hmd_pose_matrix^-1 here the cube will follow the HMD position (kinda UI)
 	if(render_models[1] != NULL)render_models[1]->draw();
+
 	glUniform1i(scene_shader->getUniformLocation("hasTexture"), true);
 	//quad->Draw();
 	/*glBindVertexArray(cube_texture);
@@ -552,7 +560,10 @@ void VR_Manager::draw()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	scene_shader->use_Shader();
-	scene_shader->set_mvp_matrix(projectionMatrixRight*viewMatrixRight*glm::inverse(HMDPoseMatrix)*model);// If we don't apply the hmd_pose_matrix^-1 here the cube will follow the HMD position (kinda UI)
+	if (triggerModel->modelMatrix != nullptr)
+		scene_shader->set_mvp_matrix(projectionMatrixRight*viewMatrixRight*glm::inverse(HMDPoseMatrix)*convertStemVRMatrixToGLMMatrix(*triggerModel->modelMatrix));//
+	else
+		scene_shader->set_mvp_matrix(projectionMatrixRight*viewMatrixRight*glm::inverse(HMDPoseMatrix)*model);// If we don't apply the hmd_pose_matrix^-1 here the cube will follow the HMD position (kinda UI)
 	if (render_models[1] != NULL)render_models[1]->draw();
 	glUniform1i(scene_shader->getUniformLocation("hasTexture"), true);
 	/*scene_shader->use_program();

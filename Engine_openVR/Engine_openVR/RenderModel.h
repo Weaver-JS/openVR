@@ -22,7 +22,7 @@ public:
 	void clean_up();
 
 	GLuint get_texture_id();
-
+	vr::HmdMatrix34_t * modelMatrix;
 private:
 	GLuint render_model_vao, render_model_vbo, render_model_ebo;
 	GLuint render_model_texture;

@@ -22,6 +22,7 @@ private:
 	uint32_t render_width, render_height;
 	TestShape* quad;
 	glm::mat4 model;
+	RenderModel * triggerModel;
 	float time;
 	std::string m_strDriver;
 	std::string m_strDisplay;
