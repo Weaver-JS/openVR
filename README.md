@@ -40,7 +40,7 @@ Shader-> Se encarga de todo lo referente a shaders, carga desde fichero, compila
 
 GameState-> Es una clase destinada a herencia que tiene los eventos pilares del gameLoop (init,update,destroy).
 
-Conclusions.
+#Conclusions.
 This project have been tested to work with Oculus & HTC VIVE. 
 
 OpenVR allow us to use nearly all HMD systems without changing the rendering pipelines, the initializers or the destructors. Although every piece of data would be raw which can be a problem when trying to get the input of the device, It's highly recommended to implement another layer which would detect which HMD is being used and determine which inputs to get.
