@@ -16,6 +16,7 @@ private:
 	vr::IVRSystem *vrContext;
 	vr::IVRRenderModels * vrModels;
 	vr::IVRCompositor * vrCompositor;
+	glm::vec3 localScale;
 	Shader* render_model_shader;
 	Shader* screen_shader;
 	Shader* scene_shader;
@@ -51,6 +52,7 @@ private:
 	bool setup_scene_buffers();
 	bool setup_frame_buffer(GLsizei width, GLsizei height, GLuint & frame_buffer, GLuint & render_buffer_depth_stencil, GLuint & tex_color_buffer);
 	glm::mat4 convertStemVRMatrixToGLMMatrix(const vr::HmdMatrix34_t &matPose);
+	glm::mat4 convertStemVRMatrixToGLMMatrix(const vr::HmdMatrix34_t & matPose, glm::vec3 scale);
 	glm::mat4 getProjectionMatrix(const vr::Hmd_Eye eye);
 	glm::mat4 getViewMatrix(const vr::Hmd_Eye eye);
 
